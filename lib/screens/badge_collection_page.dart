@@ -35,7 +35,7 @@ class _BadgeCollectionPageState extends State<BadgeCollectionPage> {
     backgroundColor: ManduaraColors.paper,
     extendBody: true,
     bottomNavigationBar: ManduaraNavigationBar(
-      selectedIndex: 3,
+      selectedIndex: 1,
       onHome: () => Navigator.maybePop(context),
       onBadges: () {
         if (_scroll.hasClients) _scroll.jumpTo(0);

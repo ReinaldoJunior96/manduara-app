@@ -794,8 +794,8 @@ class SealCard extends StatelessWidget {
   }
 }
 
-/// Light floating navigation shared by the main screens. The current tab sits
-/// on a soft pill; check-in is an outlined terracotta action in the middle.
+/// Light floating navigation shared by the main screens: Início, Selos and
+/// Perfil. The current tab sits on a soft pill.
 class ManduaraNavigationBar extends StatelessWidget {
   const ManduaraNavigationBar({
     super.key,
@@ -804,7 +804,7 @@ class ManduaraNavigationBar extends StatelessWidget {
     this.selectedIndex = 0,
   });
 
-  /// 0 Início, 1 Mapa, 3 Selos, 4 Perfil. 2 is the check-in action.
+  /// 0 Início, 1 Selos, 2 Perfil.
   final int selectedIndex;
   final VoidCallback onHome;
   final VoidCallback? onBadges;
@@ -837,57 +837,15 @@ class ManduaraNavigationBar extends StatelessWidget {
               onTap: onHome,
             ),
             _NavItem(
-              label: 'Mapa',
-              icon: ManduaraIcons.map,
-              active: selectedIndex == 1,
-              onTap: () => showDemoNotice(context, 'O mapa'),
-            ),
-            Expanded(
-              // heightFactor keeps the bar as tall as its content; a plain
-              // Center would stretch it to the whole screen.
-              child: Center(
-                heightFactor: 1,
-                child: Semantics(
-                  button: true,
-                  label: 'Fazer check-in',
-                  // Outlined, so it reads as an action and never as the
-                  // selected tab.
-                  child: Material(
-                    color: ManduaraColors.wax.withValues(alpha: .08),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      side: const BorderSide(
-                        color: ManduaraColors.wax,
-                        width: 1.4,
-                      ),
-                    ),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(16),
-                      onTap: () => showDemoNotice(context, 'O check-in'),
-                      child: const SizedBox.square(
-                        dimension: 46,
-                        child: Icon(
-                          ManduaraIcons.stamp,
-                          size: 22,
-                          color: ManduaraColors.wax,
-                          semanticLabel: 'Fazer check-in',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            _NavItem(
               label: 'Selos',
               icon: ManduaraIcons.award,
-              active: selectedIndex == 3,
+              active: selectedIndex == 1,
               onTap: onBadges ?? () => showDemoNotice(context, 'Os selos'),
             ),
             _NavItem(
               label: 'Perfil',
               icon: ManduaraIcons.user,
-              active: selectedIndex == 4,
+              active: selectedIndex == 2,
               onTap: () => showDemoNotice(context, 'O perfil'),
             ),
           ],
